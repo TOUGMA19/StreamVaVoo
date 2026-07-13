@@ -1,0 +1,357 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+@custom-variant tv (&:is(.tv-mode *));
+@custom-variant remote (&:is(.remote-nav *));
+
+/* ============ StreamFlow brand tokens ============ */
+:root {
+  /* IBO-style red on very dark base */
+  --brand-50:  #ffe8ec;
+  --brand-300: #ff5f6d;
+  --brand-400: #ff2d43;
+  --brand-500: #e50914;
+  --brand-600: #b8000f;
+  --brand-700: #7a0009;
+  --brand-glow: rgba(229, 9, 20, 0.55);
+  --bg-0: #08090c;
+  --bg-1: #0f1116;
+  --bg-2: #161a22;
+}
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root and .dark blocks define the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root (light value) and .dark (dark value)
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+/* ============ StreamFlow shell — mobile / desktop / TV ============ */
+.m3u-shell {
+  background: var(--bg-0);
+  color: #fff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+html:has(.m3u-shell), body:has(.m3u-shell) { overflow: hidden; }
+
+.font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+video { outline: none; }
+
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(229,9,20,0.55), rgba(184,0,15,0.35));
+  border-radius: 999px;
+}
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+.btn-brand {
+  position: relative;
+  background: linear-gradient(160deg, #ff5f6d 0%, #e50914 45%, #8f0008 100%);
+  box-shadow: 0 6px 22px -4px var(--brand-glow), inset 0 1px 0 rgba(255,255,255,0.22);
+  color: #fff;
+}
+.btn-brand:hover {
+  box-shadow: 0 10px 32px -4px rgba(229,9,20,0.75), inset 0 1px 0 rgba(255,255,255,0.28);
+}
+
+::selection { background: rgba(229, 9, 20, 0.45); color: white; }
+
+/* Animations */
+@keyframes float-slow { 0%,100% { transform: translate(0,0) scale(1);} 50% { transform: translate(20px,-30px) scale(1.08);} }
+@keyframes float-slow-rev { 0%,100% { transform: translate(0,0) scale(1);} 50% { transform: translate(-25px,25px) scale(1.05);} }
+@keyframes logo-glow { 0%,100% { filter: drop-shadow(0 0 6px rgba(255,122,18,0.35)); } 50% { filter: drop-shadow(0 0 18px rgba(255,122,18,0.65)); } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes rise-in { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+.animate-float-slow { animation: float-slow 12s ease-in-out infinite; }
+.animate-float-slow-rev { animation: float-slow-rev 14s ease-in-out infinite; }
+.animate-logo-glow { animation: logo-glow 3s ease-in-out infinite; }
+.animate-rise-in { animation: rise-in .35s ease-out both; }
+.shimmer-text {
+  background: linear-gradient(90deg,#ffd7dc 0%,#e50914 25%,#ffd7dc 50%,#e50914 75%,#ffd7dc 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+
+/* Focus visible — subtle by default, VERY loud on TV remote nav */
+.m3u-shell *:focus-visible {
+  outline: 2px solid rgba(229,9,20,0.65);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.m3u-shell.remote-nav *:focus-visible {
+  outline: 4px solid var(--brand-500);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 8px rgba(229,9,20,0.28), 0 14px 44px -6px rgba(229,9,20,0.7);
+  transform: scale(1.04);
+  transition: transform .12s ease-out;
+  z-index: 10;
+}
+
+/* Touch target minimums on mobile / coarse pointer */
+@media (pointer: coarse) {
+  .m3u-shell button,
+  .m3u-shell [role="button"],
+  .m3u-shell a { touch-action: manipulation; }
+  .m3u-shell .touch-target { min-width: 44px; min-height: 44px; }
+}
+
+/* Safe-area for iPhone notch */
+.m3u-shell {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* ================= TV MODE (screens ≥ 1440px OR forced) ================= */
+.m3u-shell.tv-mode {
+  /* Fluid base font: 18px on a 1280 launcher, 24px on 1920 Full-HD TV, up to 32px on 4K. */
+  font-size: clamp(18px, 1.35vw, 32px);
+  /* 5% safe area around edges — TV overscan */
+  padding: max(env(safe-area-inset-top), 2.5vh) max(env(safe-area-inset-right), 2.5vw)
+           max(env(safe-area-inset-bottom), 2.5vh) max(env(safe-area-inset-left), 2.5vw);
+}
+.m3u-shell.tv-mode .touch-target,
+.m3u-shell.tv-mode button,
+.m3u-shell.tv-mode [role="button"] { min-height: clamp(48px, 4.5vh, 72px); }
+.m3u-shell.tv-mode h1 { font-size: clamp(1.75rem, 2.6vw, 3rem); line-height: 1.15; }
+.m3u-shell.tv-mode h2 { font-size: clamp(1.4rem, 2vw, 2.25rem); line-height: 1.2; }
+.m3u-shell.tv-mode h3 { font-size: clamp(1.15rem, 1.6vw, 1.75rem); line-height: 1.25; }
+.m3u-shell.tv-mode .text-xs   { font-size: clamp(.85rem, 1vw, 1.1rem); }
+.m3u-shell.tv-mode .text-sm   { font-size: clamp(.95rem, 1.15vw, 1.25rem); }
+.m3u-shell.tv-mode .text-base { font-size: clamp(1.05rem, 1.3vw, 1.5rem); }
+.m3u-shell.tv-mode .text-lg   { font-size: clamp(1.2rem, 1.5vw, 1.75rem); }
+.m3u-shell.tv-mode .text-xl   { font-size: clamp(1.4rem, 1.8vw, 2rem); }
+.m3u-shell.tv-mode .text-2xl  { font-size: clamp(1.6rem, 2.1vw, 2.4rem); }
+/* Wider icon buttons on TV so they aim well with the D-pad. */
+.m3u-shell.tv-mode svg { width: 1.1em; height: 1.1em; }
+/* Bigger, always-visible focus ring (Android TV D-pad relies on it). */
+.m3u-shell.tv-mode *:focus,
+.m3u-shell.tv-mode *:focus-visible {
+  outline: 4px solid var(--brand-500);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 8px rgba(229,9,20,0.28), 0 14px 44px -6px rgba(229,9,20,0.7);
+  transform: scale(1.04);
+  z-index: 10;
+}
+
+/* Fluid typography for standard (non-forced) large screens too — helps 1080p TVs
+   whose browser reports 1920×1080 but doesn't match the TV UA sniff. */
+@media (min-width: 1600px) {
+  .m3u-shell { font-size: clamp(17px, 1.1vw, 24px); }
+  .m3u-shell h1 { font-size: clamp(1.5rem, 2vw, 2.5rem); }
+}
+@media (min-width: 2400px) {
+  .m3u-shell { font-size: clamp(22px, 1.3vw, 32px); }
+}
+
+/* Hint overlay for remote-control hotkeys */
+.remote-hint {
+  position: fixed; left: 50%; bottom: 2rem; transform: translateX(-50%);
+  background: rgba(8,9,12,0.92);
+  border: 1px solid rgba(229,9,20,0.35);
+  color: #fff; padding: .75rem 1.25rem; border-radius: 9999px;
+  font-size: .875rem; z-index: 60; backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.8);
+  animation: rise-in .3s ease-out;
+}
+
+/* ============ IBO-style launcher tiles ============ */
+.ibo-bg {
+  background:
+    radial-gradient(ellipse 90% 60% at 20% 0%, rgba(229,9,20,0.18), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 100% 100%, rgba(120,0,10,0.22), transparent 60%),
+    linear-gradient(180deg, #0b0d12 0%, #08090c 60%, #05060a 100%);
+}
+.ibo-tile {
+  position: relative;
+  isolation: isolate;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,0.10), transparent 60%),
+    linear-gradient(160deg, #1a1f2a 0%, #0f1319 100%);
+  color: #fff;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  will-change: transform;
+  transform: translateZ(0);
+}
+.ibo-tile::after {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -30px 40px -30px rgba(0,0,0,0.6);
+  pointer-events: none;
+}
+.ibo-tile:hover, .ibo-tile:focus-visible {
+  transform: translateY(-2px) scale(1.02);
+  border-color: rgba(229,9,20,0.55);
+  box-shadow: 0 22px 60px -12px rgba(229,9,20,0.45), 0 6px 18px -6px rgba(0,0,0,0.7);
+}
+.ibo-tile.primary {
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,0.18), transparent 55%),
+    linear-gradient(160deg, #ff2d43 0%, #e50914 45%, #8f0008 100%);
+  border-color: rgba(255,255,255,0.15);
+  box-shadow: 0 28px 70px -18px rgba(229,9,20,0.6);
+}
+.ibo-tile.primary:hover, .ibo-tile.primary:focus-visible {
+  box-shadow: 0 32px 80px -14px rgba(229,9,20,0.75);
+}
+
+/* Slight rise on tile grid entrance */
+@keyframes tile-in { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
+.tile-in { animation: tile-in .45s cubic-bezier(.2,.7,.2,1) both; }
+
+/* Perf helpers: content-visibility on long lists */
+.cv-auto { content-visibility: auto; contain-intrinsic-size: 72px 100%; }
+
+/* GPU-accelerated smooth scroll containers */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
