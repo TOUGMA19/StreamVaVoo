@@ -1,0 +1,2 @@
+-keep class app.lovable.streamflow.tv.** { *; }
+-keepattributes JavascriptInterface

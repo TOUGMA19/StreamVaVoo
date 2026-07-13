@@ -1,0 +1,14 @@
+buildscript {
+    ext {
+        compileSdkVersion = 34
+        targetSdkVersion = 34
+        minSdkVersion = 21
+        androidxAppCompatVersion = '1.7.0'
+        androidxCoreVersion = '1.13.1'
+        androidxWebkitVersion = '1.11.0'
+    }
+    repositories { google(); mavenCentral() }
+    dependencies { classpath 'com.android.tools.build:gradle:8.5.2' }
+}
+allprojects { repositories { google(); mavenCentral(); maven { url 'https://jitpack.io' } } }
+task clean(type: Delete) { delete rootProject.buildDir }
